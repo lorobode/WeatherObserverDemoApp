@@ -1,7 +1,8 @@
-package com.weatherobserverdemoapp
+package com.weatherobserverdemoapp.ui.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.weatherobserverdemoapp.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

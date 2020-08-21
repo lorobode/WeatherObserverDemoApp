@@ -1,6 +1,6 @@
 package com.weatherobserverdemoapp.di.module
 
-import com.weatherobserverdemoapp.ui.main.MainActivity
+import com.weatherobserverdemoapp.ui.main.activity.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

@@ -1,6 +1,8 @@
 package com.weatherobserverdemoapp.di.component
 
 import com.weatherobserverdemoapp.MyApplication
+import com.weatherobserverdemoapp.di.module.ActivityModule
+import com.weatherobserverdemoapp.di.module.ViewModelFactoryModule
 import dagger.Component
 import dagger.android.AndroidInjectionModule
 import javax.inject.Singleton
@@ -10,7 +12,7 @@ import javax.inject.Singleton
  */
 @Singleton
 @Component(
-    modules = [AndroidInjectionModule::class]
+    modules = [AndroidInjectionModule::class, ActivityModule::class, ViewModelFactoryModule::class]
 )
 interface Injection {
     fun inject(app: MyApplication)

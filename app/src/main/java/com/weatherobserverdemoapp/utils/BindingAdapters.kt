@@ -43,3 +43,13 @@ fun setMutableVisibility(view: View, visibility: MutableLiveData<Int>?) {
             Observer { value -> view.visibility = value ?: View.VISIBLE })
     }
 }
+
+@BindingAdapter("mutableText")
+fun setMutableText(view: TextView, text: MutableLiveData<String>?) {
+    val parentActivity: AppCompatActivity? = view.getParentActivity()
+    if (parentActivity != null && text != null) {
+        text.observe(parentActivity, Observer { value ->
+            view.text = value ?: ""
+        })
+    }
+}

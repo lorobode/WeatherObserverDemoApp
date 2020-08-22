@@ -3,6 +3,7 @@ package com.weatherobserverdemoapp
 import android.app.Activity
 import android.app.Application
 import com.weatherobserverdemoapp.di.component.DaggerInjection
+import com.weatherobserverdemoapp.di.module.DatabaseModule
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
 import javax.inject.Inject
@@ -17,6 +18,7 @@ class MyApplication : Application(), HasActivityInjector {
 
         // Dagger injection
         DaggerInjection.builder()
+            .databaseModule(DatabaseModule(this))
             .build().inject(this)
     }
 

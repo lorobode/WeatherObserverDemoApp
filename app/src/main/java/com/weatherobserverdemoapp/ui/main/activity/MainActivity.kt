@@ -8,6 +8,8 @@ import com.weatherobserverdemoapp.databinding.ActivityMainBinding
 import com.weatherobserverdemoapp.ui.base.BaseActivity
 import com.weatherobserverdemoapp.ui.main.viewmodel.MainViewModel
 import com.weatherobserverdemoapp.ui.main.viewmodel.MainViewModelFactory
+import com.weatherobserverdemoapp.utils.SELECT_USER
+import com.weatherobserverdemoapp.utils.extensions.getUserId
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity<MainViewModel, MainViewModelFactory>() {
@@ -23,13 +25,21 @@ class MainActivity : BaseActivity<MainViewModel, MainViewModelFactory>() {
 
         mBinding = DataBindingUtil.setContentView(this, getLayoutId())
         mBinding.viewModel = mViewModel
+        mViewModel.bind(getUserId())
 
         initUi()
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        val currentUserId = getUserId()
+        if (mViewModel.userId != currentUserId) mViewModel.bind(currentUserId)
+    }
+
     private fun initUi() {
         userContainer.setOnClickListener {
-            startActivity(Intent(this, UserActivity::class.java))
+            startActivityForResult(Intent(this, UserActivity::class.java), SELECT_USER)
         }
     }
 }

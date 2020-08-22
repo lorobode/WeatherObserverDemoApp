@@ -1,6 +1,7 @@
 package com.weatherobserverdemoapp.di.module
 
 import com.weatherobserverdemoapp.ui.main.activity.MainActivity
+import com.weatherobserverdemoapp.ui.main.activity.UserActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -9,4 +10,7 @@ abstract class ActivityModule {
 
     @ContributesAndroidInjector
     abstract fun contributeMainActivity(): MainActivity
+
+    @ContributesAndroidInjector
+    abstract fun contributeUserActivity(): UserActivity
 }

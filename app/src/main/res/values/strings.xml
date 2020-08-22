@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">WeatherObserverDemoApp</string>
     <string name="select_user">You need to add or select a user.</string>
+    <string name="user_title">User</string>
 </resources>

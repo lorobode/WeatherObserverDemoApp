@@ -2,13 +2,18 @@ package com.weatherobserverdemoapp.di.module
 
 import androidx.lifecycle.ViewModelProvider
 import com.weatherobserverdemoapp.ui.main.viewmodel.MainViewModelFactory
+import com.weatherobserverdemoapp.ui.main.viewmodel.UserViewModelFactory
 import dagger.Module
 import dagger.Provides
 
 @Module
-class ViewModelFactoryModule {
+class FactoryModule {
 
     @Provides
     fun provideMainViewModelFactory(factory: MainViewModelFactory): ViewModelProvider.Factory =
+        factory
+
+    @Provides
+    fun provideUserViewModelFactory(factory: UserViewModelFactory): ViewModelProvider.Factory =
         factory
 }

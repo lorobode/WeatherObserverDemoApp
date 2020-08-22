@@ -6,8 +6,9 @@ apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
-    dataBinding {
-        enabled = true
+
+    buildFeatures {
+        dataBinding true
     }
 
     defaultConfig {
@@ -51,4 +52,7 @@ dependencies {
 
     // Data Binding
     kapt "androidx.databinding:databinding-compiler:$gradle_version"
+
+    // Material
+    implementation 'com.google.android.material:material:1.2.0'
 }

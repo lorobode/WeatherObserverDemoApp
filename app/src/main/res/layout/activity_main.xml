@@ -57,7 +57,7 @@
 
                     <TextView
                         mutableText="@{viewModel.userName}"
-                        mutableVisibility="@{viewModel.userNameVisibility}"
+                        mutableVisibility="@{viewModel.userSelectedVisibility}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
@@ -85,13 +85,24 @@
             app:layout_constraintTop_toBottomOf="@id/appBar">
 
             <TextView
-                mutableVisibility="@{viewModel.addUserMessageVisibility}"
+                mutableReferenceText="@{viewModel.instructionsText}"
+                mutableVisibility="@{viewModel.instructionsVisibility}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/select_user"
                 android:textColor="@color/black" />
         </FrameLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addCityFab"
+            mutableVisibility="@{viewModel.userSelectedVisibility}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:src="@drawable/baseline_add_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

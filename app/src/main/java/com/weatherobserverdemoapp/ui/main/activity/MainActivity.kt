@@ -8,7 +8,6 @@ import com.weatherobserverdemoapp.databinding.ActivityMainBinding
 import com.weatherobserverdemoapp.ui.base.BaseActivity
 import com.weatherobserverdemoapp.ui.main.viewmodel.MainViewModel
 import com.weatherobserverdemoapp.ui.main.viewmodel.MainViewModelFactory
-import com.weatherobserverdemoapp.utils.SELECT_USER
 import com.weatherobserverdemoapp.utils.extensions.getUserId
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -39,7 +38,11 @@ class MainActivity : BaseActivity<MainViewModel, MainViewModelFactory>() {
 
     private fun initUi() {
         userContainer.setOnClickListener {
-            startActivityForResult(Intent(this, UserActivity::class.java), SELECT_USER)
+            startActivity(Intent(this, UserActivity::class.java))
+        }
+
+        addCityFab.setOnClickListener {
+            startActivity(Intent(this, CityActivity::class.java))
         }
     }
 }

@@ -2,6 +2,9 @@
     <string name="app_name">WeatherObserverDemoApp</string>
     <string name="select_user">You need to add or select a user.</string>
     <string name="user_title">User</string>
+    <string name="city_title">City</string>
     <string name="find_create_user">Digit to find user or create a new one</string>
     <string name="add_user">Click to add current name</string>
+    <string name="add_cities">Add cities to show current weather here</string>
+    <string name="type_search_city">Type to search city</string>
 </resources>

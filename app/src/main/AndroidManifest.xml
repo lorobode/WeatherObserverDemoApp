@@ -17,6 +17,11 @@
             android:theme="@style/NoActionBar" />
 
         <activity
+            android:name=".ui.main.activity.CityActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar" />
+
+        <activity
             android:name=".ui.main.activity.MainActivity"
             android:theme="@style/NoActionBar">
             <intent-filter>

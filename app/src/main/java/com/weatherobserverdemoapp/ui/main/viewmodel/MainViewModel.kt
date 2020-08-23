@@ -15,11 +15,12 @@ class MainViewModel @Inject constructor(private val userRepository: UserReposito
 
     private lateinit var loadUserDisposable: Disposable
 
-    val addUserMessageVisibility = MutableLiveData<Int>()
+    val instructionsVisibility = MutableLiveData<Int>()
+    val instructionsText = MutableLiveData<Int>()
     val addImage = MutableLiveData<Int>()
     val addImageVisibility = MutableLiveData<Int>()
     val userName = MutableLiveData<String>()
-    val userNameVisibility = MutableLiveData<Int>()
+    val userSelectedVisibility = MutableLiveData<Int>()
 
     var userId = 0
 
@@ -32,13 +33,15 @@ class MainViewModel @Inject constructor(private val userRepository: UserReposito
         this.userId = userId
 
         if (userId > 0) {
-            addUserMessageVisibility.value = View.GONE
+            instructionsText.value = R.string.add_cities
+            instructionsVisibility.value = View.VISIBLE
             addImageVisibility.value = View.GONE
-            userNameVisibility.value = View.VISIBLE
+            userSelectedVisibility.value = View.VISIBLE
             loadUser(userId)
         } else {
-            addUserMessageVisibility.value = View.VISIBLE
-            userNameVisibility.value = View.GONE
+            instructionsText.value = R.string.select_user
+            instructionsVisibility.value = View.VISIBLE
+            userSelectedVisibility.value = View.GONE
             addImageVisibility.value = View.VISIBLE
             addImage.value = R.drawable.baseline_add_circle_24
         }

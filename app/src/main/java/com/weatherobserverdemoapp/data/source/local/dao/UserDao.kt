@@ -1,4 +1,4 @@
-package com.weatherobserverdemoapp.data.source.dao
+package com.weatherobserverdemoapp.data.source.local.dao
 
 import androidx.room.Dao
 import androidx.room.Insert

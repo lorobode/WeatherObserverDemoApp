@@ -2,8 +2,8 @@ package com.weatherobserverdemoapp.di.module
 
 import android.app.Application
 import androidx.room.Room
-import com.weatherobserverdemoapp.data.source.dao.UserDao
-import com.weatherobserverdemoapp.data.source.database.AppDatabase
+import com.weatherobserverdemoapp.data.source.local.dao.UserDao
+import com.weatherobserverdemoapp.data.source.local.database.AppDatabase
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

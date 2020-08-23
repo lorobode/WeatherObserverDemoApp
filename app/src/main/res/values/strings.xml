@@ -7,4 +7,7 @@
     <string name="add_user">Click to add current name</string>
     <string name="add_cities">Add cities to show current weather here</string>
     <string name="type_search_city">Type to search city</string>
+    <string name="city_item">City: </string>
+    <string name="state_item">State: </string>
+    <string name="contry_item">Country: </string>
 </resources>

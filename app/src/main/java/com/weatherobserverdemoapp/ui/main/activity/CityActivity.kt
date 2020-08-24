@@ -71,6 +71,12 @@ class CityActivity : BaseActivity<CityViewModel, CityViewModelFactory>() {
                 Toast.makeText(this, message, Toast.LENGTH_LONG).show()
             }
         })
+
+        mViewModel.showMessageLiveEvent.observe(this, Observer {
+            it.getContentIfNotHandledOrReturnNull()?.let { messageRef ->
+                Toast.makeText(this, messageRef, Toast.LENGTH_LONG).show()
+            }
+        })
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

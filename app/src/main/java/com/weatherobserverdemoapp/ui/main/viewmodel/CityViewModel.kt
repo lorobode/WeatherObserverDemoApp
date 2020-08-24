@@ -1,6 +1,7 @@
 package com.weatherobserverdemoapp.ui.main.viewmodel
 
 import androidx.lifecycle.MutableLiveData
+import com.weatherobserverdemoapp.R
 import com.weatherobserverdemoapp.data.model.City
 import com.weatherobserverdemoapp.data.model.SelectedCity
 import com.weatherobserverdemoapp.data.source.repository.CityRepository
@@ -9,6 +10,7 @@ import com.weatherobserverdemoapp.utils.Event
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import retrofit2.HttpException
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -22,6 +24,7 @@ class CityViewModel @Inject constructor(private val cityRepository: CityReposito
     val cityLoadingLiveEvent = MutableLiveData<Event<Boolean>>()
     val cityAddedLiveEvent = MutableLiveData<Event<Boolean>>()
     val selectedCityEvent = MutableLiveData<Event<Pair<City, Boolean>>>()
+    val showMessageLiveEvent = MutableLiveData<Event<Int>>()
 
     override fun onCleared() {
         super.onCleared()
@@ -40,6 +43,9 @@ class CityViewModel @Inject constructor(private val cityRepository: CityReposito
                 }, {
                     Timber.d(it)
                     cityLoadingLiveEvent.value = Event(false)
+                    if (it is HttpException && it.code() == 503) {
+                        showMessageLiveEvent.value = Event(R.string.unauthorized)
+                    }
                 })
     }
 

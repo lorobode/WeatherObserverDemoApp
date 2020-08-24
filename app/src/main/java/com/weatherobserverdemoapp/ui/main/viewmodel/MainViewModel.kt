@@ -14,6 +14,7 @@ import com.weatherobserverdemoapp.utils.Event
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import retrofit2.HttpException
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -42,6 +43,7 @@ class MainViewModel @Inject constructor(
     val currentWeatherLiveEvent = MutableLiveData<Event<CityWeather>>()
     val clearListLiveEvent = MutableLiveData<Event<Boolean>>()
     val endLoadingWeatherLiveEvent = MutableLiveData<Event<Boolean>>()
+    val showMessageLiveEvent = MutableLiveData<Event<Int>>()
 
     override fun onCleared() {
         super.onCleared()
@@ -121,6 +123,9 @@ class MainViewModel @Inject constructor(
                     Timber.d(it)
                     loadingWeather = false
                     endLoadingWeatherLiveEvent.value = Event(true)
+                    if (it is HttpException && it.code() == 503) {
+                        showMessageLiveEvent.value = Event(R.string.unauthorized)
+                    }
                 })
     }
 

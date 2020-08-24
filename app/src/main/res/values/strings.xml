@@ -23,6 +23,7 @@
     <string name="email_not_valid">Invalid email format</string>
     <string name="weather_observation">Observation time: </string>
     <string name="weather_observation_period">Observation period: </string>
+    <string name="unauthorized">The allowed number of requests has been exceeded.</string>
 
     // Weather
     <string name="sunny">Sunny</string>

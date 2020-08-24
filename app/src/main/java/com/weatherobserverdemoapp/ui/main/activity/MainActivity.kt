@@ -2,6 +2,7 @@ package com.weatherobserverdemoapp.ui.main.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -56,6 +57,12 @@ class MainActivity : BaseActivity<MainViewModel, MainViewModelFactory>() {
         mViewModel.endLoadingWeatherLiveEvent.observe(this, Observer {
             it.getContentIfNotHandledOrReturnNull()?.let { endLoading ->
                 if (endLoading) swipeContainer.isRefreshing = false
+            }
+        })
+
+        mViewModel.showMessageLiveEvent.observe(this, Observer {
+            it.getContentIfNotHandledOrReturnNull()?.let { messageRef ->
+                Toast.makeText(this, messageRef, Toast.LENGTH_LONG).show()
             }
         })
     }

@@ -3,12 +3,14 @@ package com.weatherobserverdemoapp.ui.main.viewmodel
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import com.weatherobserverdemoapp.R
+import com.weatherobserverdemoapp.data.model.CityCurrentWeather
 import com.weatherobserverdemoapp.data.model.CityWeather
 import com.weatherobserverdemoapp.data.model.SelectedCity
 import com.weatherobserverdemoapp.data.source.repository.CityRepository
 import com.weatherobserverdemoapp.data.source.repository.UserRepository
 import com.weatherobserverdemoapp.data.source.repository.WeatherRepository
 import com.weatherobserverdemoapp.ui.base.BaseViewModel
+import com.weatherobserverdemoapp.utils.Event
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -34,8 +36,12 @@ class MainViewModel @Inject constructor(
     val userSelectedVisibility = MutableLiveData<Int>()
 
     var userId = 0
-    var selectedCities = listOf<SelectedCity>()
+    private var selectedCities = listOf<SelectedCity>()
     var loadingWeather = false
+
+    val currentWeatherLiveEvent = MutableLiveData<Event<CityWeather>>()
+    val clearListLiveEvent = MutableLiveData<Event<Boolean>>()
+    val endLoadingWeatherLiveEvent = MutableLiveData<Event<Boolean>>()
 
     override fun onCleared() {
         super.onCleared()
@@ -52,6 +58,8 @@ class MainViewModel @Inject constructor(
             instructionsVisibility.value = View.VISIBLE
             addImageVisibility.value = View.GONE
             userSelectedVisibility.value = View.VISIBLE
+
+            clearListLiveEvent.value = Event(true)
             loadUser(userId)
             loadSelectedCities(userId)
         } else {
@@ -63,7 +71,7 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    private fun loadSelectedCities(userId: Int) {
+    fun loadSelectedCities(userId: Int) {
         loadSelectedCitiesDisposable =
             cityRepository.selectedCityAvailable(userId)
                 .subscribeOn(Schedulers.io())
@@ -89,7 +97,7 @@ class MainViewModel @Inject constructor(
             })
     }
 
-    fun loadCurrentWeather() {
+    private fun loadCurrentWeather() {
         if (loadingWeather) return
         loadingWeather = true
 
@@ -97,20 +105,34 @@ class MainViewModel @Inject constructor(
     }
 
     private fun loadCurrentWeather(position: Int) {
-        if (position >= selectedCities.size) return
+        if (position >= selectedCities.size) {
+            loadingWeather = false
+            endLoadingWeatherLiveEvent.value = Event(true)
+            return
+        }
         loadWeatherDisposable =
             weatherRepository.getCurrentWeather(selectedCities[position].city.id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    val cityCurrentWeather = CityWeather(
-                        city = selectedCities[position].city,
-                        currentWeather = it.first()
-                    )
-
+                    onLoadCityCurrentWeatherSuccess(it.first(), position)
                     loadCurrentWeather(position + 1)
                 }, {
                     Timber.d(it)
+                    loadingWeather = false
+                    endLoadingWeatherLiveEvent.value = Event(true)
                 })
+    }
+
+    private fun onLoadCityCurrentWeatherSuccess(
+        currentWeather: CityCurrentWeather,
+        cityPosition: Int
+    ) {
+        instructionsVisibility.value = View.GONE
+        val cityWeather = CityWeather(
+            city = selectedCities[cityPosition].city,
+            currentWeather = currentWeather
+        )
+        currentWeatherLiveEvent.value = Event(cityWeather)
     }
 }

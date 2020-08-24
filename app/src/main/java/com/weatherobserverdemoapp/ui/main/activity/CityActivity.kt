@@ -85,6 +85,7 @@ class CityActivity : BaseActivity<CityViewModel, CityViewModelFactory>() {
 
     private fun initUi() {
         searchCityEdt.searchWithDelay {
+            runOnUiThread { adapter.clear() }
             if (it.isNotEmpty()) mViewModel.getCities(it)
         }
 

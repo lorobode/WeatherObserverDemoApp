@@ -6,6 +6,7 @@ import com.weatherobserverdemoapp.data.source.local.dao.CityDao
 import com.weatherobserverdemoapp.data.source.remote.Api
 import com.weatherobserverdemoapp.utils.WEATHER_API_KEY
 import io.reactivex.Observable
+import java.util.*
 import javax.inject.Inject
 
 class CityRepository @Inject constructor(private val api: Api, private val cityDao: CityDao) {
@@ -20,5 +21,9 @@ class CityRepository @Inject constructor(private val api: Api, private val cityD
 
     fun cityAdded(cityId: Long): Observable<Int> {
         return cityDao.cityAdded(cityId).toObservable()
+    }
+
+    fun selectedCityAvailable(userId: Int): Observable<List<SelectedCity>> {
+        return cityDao.getSelectedCitiesAvailable(Date(), userId).toObservable()
     }
 }

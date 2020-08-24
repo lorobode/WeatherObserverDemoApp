@@ -20,4 +20,40 @@
     <string name="add_city">Add city</string>
     <string name="start_window">Observe from:</string>
     <string name="end_window">Observe until:</string>
+
+    // Weather
+    <string name="sunny">Sunny</string>
+    <string name="m_sunny">Mostly Sunny</string>
+    <string name="p_sunny">Partly Sunny</string>
+    <string name="i_clouds">Intermittent Clouds</string>
+    <string name="h_sunshine">	Hazy Sunshine</string>
+    <string name="m_cloudy">Mostly Cloudy</string>
+    <string name="cloudy">Cloudy</string>
+    <string name="dreary">Dreary (Overcast)</string>
+    <string name="fog">Fog</string>
+    <string name="showers">Showers</string>
+    <string name="m_cloudy_showers">Mostly Cloudy w/ Showers</string>
+    <string name="p_sunny_showers">Partly Sunny w/ Showers</string>
+    <string name="t_storms">T-Storms</string>
+    <string name="m_cloudy_storms">Mostly Cloudy w/ T-Storms</string>
+    <string name="p_sunny_storms">Partly Sunny w/ T-Storms</string>
+    <string name="rain">Rain</string>
+    <string name="flurries">Flurries</string>
+    <string name="m_cloudy_flurries">Mostly Cloudy w/ Flurries</string>
+    <string name="p_sunny_flurries">Partly Sunny w/ Flurries</string>
+    <string name="snow">Snow</string>
+    <string name="m_cloudy_snow">Mostly Cloudy w/ Snow</string>
+    <string name="ice">Ice</string>
+    <string name="sleet">Sleet</string>
+    <string name="f_rain">Freezing Rain</string>
+    <string name="rain_snow">Rain and Snow</string>
+    <string name="hot">Hot</string>
+    <string name="cold">Cold</string>
+    <string name="windy">Windy</string>
+    <string name="clear">Clear</string>
+    <string name="m_clear">Mostly Clear</string>
+    <string name="p_cloudy">Partly Cloudy</string>
+    <string name="h_moonlight">Hazy Moonlight</string>
+    <string name="p_cloudy_showers">Partly Cloudy w/ Showers</string>
+    <string name="p_cloudy_storms">Partly Cloudy w/ T-Storms</string>
 </resources>

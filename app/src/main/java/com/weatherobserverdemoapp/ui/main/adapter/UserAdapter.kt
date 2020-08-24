@@ -65,7 +65,7 @@ class UserAdapter(
     }
 
     fun filterUsers(userName: String) {
-        filteredUsers = allUsers.filter { it.name.toLowerCase().contains(userName.toLowerCase()) }
+        filteredUsers = allUsers.filter { it.email.toLowerCase().contains(userName.toLowerCase()) }
         notifyDataSetChanged()
     }
 
@@ -84,7 +84,7 @@ class UserAdapter(
 
             val user = if (options.isEmpty()) null else options[position]
             if (user == null) viewModel.bind(context.getString(R.string.add_user))
-            else viewModel.bind(options[position].name)
+            else viewModel.bind(options[position].email)
 
             itemView.setOnClickListener { clickListener(user) }
         }

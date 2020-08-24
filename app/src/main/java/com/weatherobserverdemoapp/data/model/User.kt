@@ -8,5 +8,5 @@ import java.io.Serializable
 data class User(
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null,
-    var name: String
+    var email: String
 ) : Serializable

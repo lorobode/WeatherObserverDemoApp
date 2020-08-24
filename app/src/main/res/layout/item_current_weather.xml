@@ -31,14 +31,52 @@
                 android:textStyle="bold"
                 tools:text="Brasil - Fortaleza, Ceará" />
 
-            <TextView
-                mutableText="@{viewModel.date}"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxLines="1"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                tools:text="01:42 - 24/08/2020" />
+                android:layout_marginTop="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:text="@string/weather_observation"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    mutableText="@{viewModel.date}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:maxLines="1"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    tools:text="01:42 - 24/08/2020" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:text="@string/weather_observation_period"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    mutableText="@{viewModel.datePeriod}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:maxLines="1"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    tools:text="24/08/2020 ~ 24/09/2020" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout

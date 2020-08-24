@@ -40,8 +40,8 @@ class UserViewModel @Inject constructor(private val userRepository: UserReposito
             })
     }
 
-    fun addUser(name: String) {
-        val user = User(name = name)
+    fun addUser(email: String) {
+        val user = User(email = email)
         addUserDisposable = userRepository.addUser(user).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({

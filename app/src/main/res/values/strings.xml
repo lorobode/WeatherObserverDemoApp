@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">Weather Observer</string>
-    <string name="select_user">You need to add or select a user.</string>
+    <string name="select_user">You need to add or select a user email.</string>
     <string name="user_title">User</string>
     <string name="city_title">City</string>
-    <string name="find_create_user">Digit to find user or create a new one</string>
-    <string name="add_user">Click to add current name</string>
-    <string name="add_cities">Add cities to show current weather here</string>
+    <string name="find_create_user">Digit to find user email or create a new one</string>
+    <string name="add_user">Click to add current email</string>
+    <string name="add_cities">Add cities to show current weather here or pull to refresh</string>
     <string name="type_search_city">Type to search city</string>
     <string name="city_item">City: </string>
     <string name="state_item">State: </string>
@@ -20,6 +20,9 @@
     <string name="add_city">Add city</string>
     <string name="start_window">Observe from:</string>
     <string name="end_window">Observe until:</string>
+    <string name="email_not_valid">Invalid email format</string>
+    <string name="weather_observation">Observation time: </string>
+    <string name="weather_observation_period">Observation period: </string>
 
     // Weather
     <string name="sunny">Sunny</string>

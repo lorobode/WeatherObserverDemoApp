@@ -1,7 +1,9 @@
 package com.weatherobserverdemoapp.ui.main.activity
 
 import android.os.Bundle
+import android.util.Patterns
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -65,16 +67,22 @@ class UserActivity : BaseActivity<UserViewModel, UserViewModelFactory>() {
     private fun initUI() {
         userList.adapter = adapter
         searchEdt.doOnTextChanged { text, _, _, _ ->
-            adapter.filterUsers(text.toString())
+            adapter.filterUsers(text.toString().toLowerCase().replace(" ", ""))
         }
 
         mViewModel.loadUsers()
     }
 
     private fun onUserClick(user: User?) {
-        val currentSearch = searchEdt.text.toString()
+        val currentSearch = searchEdt.text.toString().toLowerCase().replace(" ", "")
+        val validEmail = Patterns.EMAIL_ADDRESS.matcher(currentSearch).matches()
+
         if (user == null && currentSearch.isNotEmpty()) {
-            mViewModel.addUser(currentSearch)
+            if (validEmail) {
+                mViewModel.addUser(currentSearch)
+            } else {
+                Toast.makeText(this, R.string.email_not_valid, Toast.LENGTH_LONG).show()
+            }
         } else {
             user?.id?.let { setUserId(it) }
             finish()

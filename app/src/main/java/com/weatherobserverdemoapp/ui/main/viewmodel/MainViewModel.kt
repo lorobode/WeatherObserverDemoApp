@@ -90,7 +90,7 @@ class MainViewModel @Inject constructor(
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                userName.value = it.name
+                userName.value = it.email
                 loadUserDisposable.dispose()
             }, {
                 loadUserDisposable.dispose()
@@ -130,7 +130,7 @@ class MainViewModel @Inject constructor(
     ) {
         instructionsVisibility.value = View.GONE
         val cityWeather = CityWeather(
-            city = selectedCities[cityPosition].city,
+            selectedCity = selectedCities[cityPosition],
             currentWeather = currentWeather
         )
         currentWeatherLiveEvent.value = Event(cityWeather)

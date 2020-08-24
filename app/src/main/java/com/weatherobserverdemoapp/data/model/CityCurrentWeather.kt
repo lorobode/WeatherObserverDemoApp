@@ -6,7 +6,7 @@ import java.io.Serializable
 import java.util.*
 
 data class CityWeather(
-    val city: City,
+    val selectedCity: SelectedCity,
     val currentWeather: CityCurrentWeather
 )
 

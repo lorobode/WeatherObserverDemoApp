@@ -2,6 +2,7 @@ package com.weatherobserverdemoapp.di.module
 
 import android.app.Application
 import androidx.room.Room
+import com.weatherobserverdemoapp.data.source.local.dao.CityDao
 import com.weatherobserverdemoapp.data.source.local.dao.UserDao
 import com.weatherobserverdemoapp.data.source.local.database.AppDatabase
 import dagger.Module
@@ -25,4 +26,8 @@ class DatabaseModule(val app: Application) {
     @Provides
     @Singleton
     fun provideUserDao(database: AppDatabase): UserDao = database.userDao()
+
+    @Provides
+    @Singleton
+    fun provideCityDao(database: AppDatabase): CityDao = database.cityDao()
 }

@@ -14,7 +14,7 @@ import com.weatherobserverdemoapp.utils.holder.LoadingHolder
 
 
 class CityAdapter(
-    private var clickListener: (City?) -> Unit
+    private var clickListener: (City) -> Unit
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -67,12 +67,17 @@ class CityAdapter(
         notifyDataSetChanged()
     }
 
+    fun clear() {
+        this.cities.clear()
+        notifyDataSetChanged()
+    }
+
     abstract class DefaultHolder(view: View) : RecyclerView.ViewHolder(view)
 
     class TextHolder(
         private val binding: ItemCityBinding,
         private val context: Context,
-        val clickListener: (City?) -> Unit
+        val clickListener: (City) -> Unit
     ) : DefaultHolder(binding.root) {
 
         private val viewModel = CityItemViewModel()

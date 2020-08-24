@@ -10,4 +10,14 @@
     <string name="city_item">City: </string>
     <string name="state_item">State: </string>
     <string name="contry_item">Country: </string>
+    <string name="city_added">City added/updated to your list</string>
+    <string name="city_error">An error trying to add/update city occurred</string>
+    <string name="city_updated">City updated</string>
+    <string name="confirm_button">Confirm</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="ok_button">Ok</string>
+    <string name="update_city">Update city</string>
+    <string name="add_city">Add city</string>
+    <string name="start_window">Observe from:</string>
+    <string name="end_window">Observe until:</string>
 </resources>

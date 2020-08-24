@@ -1,7 +1,7 @@
 package com.weatherobserverdemoapp.utils
 
 const val BASE_URL = "http://dataservice.accuweather.com/"
-const val WEATHER_API_KEY = "Wo2sGP2E2BtuGlzaONwoZsgs4E63OoMF"
+const val WEATHER_API_KEY = "o7wAnbZJADaBwRJMKoEPQUJwOGcezGJi"
 const val CURRENT_WEATHER_URL = "currentconditions/v1/"
 
 // Request Codes
